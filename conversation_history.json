@@ -37,6 +37,37 @@
         "message_text": "hey! 😊 just saw ur msg. yeah im free tonight around 8pm. should we meet at the usual place? btw did u get the photos from last weekend? lmk! 📸✨",
         "timestamp": "2025-08-12T13:10:29.546284",
         "analysis": {}
+      },
+      {
+        "message_id": "single_1756715523.418901",
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-09-01T14:02:03.418901",
+        "analysis": {
+          "summary": "❓ Continuing: yo whats up",
+          "type": "inquiry",
+          "intent": "question",
+          "urgency": "low",
+          "confidence": 0.5333333333333333,
+          "context_used": true,
+          "platform_optimized": true,
+          "reasoning": [
+            "Classified as 'question' intent based on message patterns",
+            "Urgency level: 'low' based on keyword analysis",
+            "Platform-optimized for whatsapp",
+            "Used conversation context (1 insights)",
+            "Context: Continues previous conversation topic"
+          ],
+          "metadata": {
+            "intent_confidence": 0.6666666666666666,
+            "urgency_confidence": 0.4,
+            "context_messages_used": 3,
+            "platform": "whatsapp",
+            "timestamp": "2025-09-01T14:02:03.418901",
+            "context_insights": [
+              "Continues previous conversation topic"
+            ]
+          }
+        }
       }
     ],
     "demo_user_instagram": [
@@ -59,28 +90,30 @@
   "user_profiles": {
     "demo_user": {
       "platforms": {
-        "whatsapp": 2,
+        "whatsapp": 3,
         "instagram": 1,
         "email": 1
       },
       "message_patterns": {
         "intents": {
-          "request": 1
+          "request": 1,
+          "question": 1
         },
         "urgency_levels": {
-          "high": 1
+          "high": 1,
+          "low": 1
         },
         "common_topics": []
       },
       "activity_stats": {
-        "total_messages": 4,
+        "total_messages": 5,
         "first_seen": "2025-08-11T14:47:34.506596",
-        "last_seen": "2025-08-12T14:19:00.563792"
+        "last_seen": "2025-09-01T14:02:12.333716"
       }
     }
   },
   "metadata": {
     "created": "2025-08-11T14:46:24.378722",
-    "last_updated": "2025-08-12T14:19:00.563792"
+    "last_updated": "2025-09-01T14:02:12.333716"
   }
 }

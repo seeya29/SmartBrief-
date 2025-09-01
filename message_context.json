@@ -3,11 +3,6 @@
     "demo_user_whatsapp": [
       {
         "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
-        "timestamp": "2025-08-11T14:46:47.226386",
-        "message_id": "single_1754903807.226386"
-      },
-      {
-        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
         "timestamp": "2025-08-11T14:55:00.458698",
         "message_id": "single_1754904300.458698"
       },
@@ -30,6 +25,11 @@
         "message_text": "hey! 😊 just saw ur msg. yeah im free tonight around 8pm. should we meet at the usual place? btw did u get the photos from last weekend? lmk! 📸✨",
         "timestamp": "2025-08-12T13:10:29.546284",
         "message_id": "single_1754984429.546284"
+      },
+      {
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-09-01T14:02:03.418901",
+        "message_id": "single_1756715523.418901"
       }
     ],
     "alice_work_email": [
