@@ -111,3 +111,13 @@ Gmail/Outlook API integration
 Advanced reinforcement learning for personalization
 
 Mobile-friendly dashboard
+
+**SummaryFlow v3 API**
+- File: `summaryflow_v3.py`
+- Purpose: Classifies message `type`, `intent`, `urgency` and extracts entities.
+- Usage:
+  - Python: `from summaryflow_v3 import summarize_message`
+  - Call with payload:
+    - `{ "user_id": "abc123", "platform": "whatsapp", "message_id": "m001", "message_text": "Hey, please confirm tomorrow's 5 PM meeting with Priya.", "timestamp": "2025-11-20T14:00:00Z" }`
+- Output structure:
+  - `{ "summary_id": "s_...", "user_id": "abc123", "platform": "whatsapp", "message_id": "m001", "summary": "User wants confirmation for a 5 PM meeting with Priya tomorrow.", "type": "meeting", "intent": "confirm_meeting", "urgency": "medium", "entities": { "person": ["Priya"], "datetime": "2025-11-21T17:00:00Z" }, "generated_at": "2025-11-20T14:00:02Z" }`

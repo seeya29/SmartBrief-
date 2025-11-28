@@ -9,6 +9,7 @@ import os
 import tempfile
 from datetime import datetime, timedelta
 from smart_summarizer_v3 import SmartSummarizerV3, summarize_message
+from summaryflow_v3 import summarize_message as flow_summarize
 from context_loader import ContextLoader
 from feedback_system import FeedbackCollector, FeedbackEnhancedSummarizer
 
@@ -624,5 +625,4 @@ if __name__ == '__main__':
     # Run performance tests
     print("\n" + "=" * 50)
     run_performance_test()
-    
     print("\n🎉 All tests completed!")
