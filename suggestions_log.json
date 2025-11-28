@@ -1,0 +1,12 @@
+{
+  "action_counts": {
+    "quick_reply": 1
+  },
+  "success_rates": {
+    "quick_reply": 1.0
+  },
+  "user_preferences": {
+    "quick_reply": 1
+  },
+  "category_effectiveness": {}
+}

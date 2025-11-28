@@ -1,0 +1,89 @@
+{
+  "feedback_entries": [
+    {
+      "feedback_id": "fb_1754903854.489077",
+      "message_id": "single_1754903807.226386",
+      "user_id": "demo_user",
+      "platform": "whatsapp",
+      "original_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+      "generated_summary": "🙏 Continuing: Hey",
+      "feedback_score": 0,
+      "feedback_comment": "",
+      "category_ratings": {
+        "summary_quality": -1,
+        "intent_detection": 1,
+        "urgency_level": 1
+      },
+      "timestamp": "2025-08-11T14:47:34.489077",
+      "feedback_version": "1.0"
+    },
+    {
+      "feedback_id": "fb_1756715532.32283",
+      "message_id": "single_1756715523.418901",
+      "user_id": "demo_user",
+      "platform": "whatsapp",
+      "original_text": "yo whats up? party tonight at 8pm, u coming?",
+      "generated_summary": "❓ Continuing: yo whats up",
+      "feedback_score": 1,
+      "feedback_comment": "",
+      "category_ratings": {
+        "summary_quality": 1,
+        "intent_detection": 1,
+        "urgency_level": 1
+      },
+      "timestamp": "2025-09-01T14:02:12.322830",
+      "feedback_version": "1.0"
+    }
+  ],
+  "summary_stats": {
+    "total_feedback": 2,
+    "positive_feedback": 1,
+    "negative_feedback": 0,
+    "neutral_feedback": 1
+  },
+  "category_stats": {
+    "summary_quality": {
+      "total": 2,
+      "positive": 1,
+      "negative": 1,
+      "neutral": 0,
+      "average": 0.0
+    },
+    "intent_detection": {
+      "total": 2,
+      "positive": 2,
+      "negative": 0,
+      "neutral": 0,
+      "average": 1.0
+    },
+    "urgency_level": {
+      "total": 2,
+      "positive": 2,
+      "negative": 0,
+      "neutral": 0,
+      "average": 1.0
+    }
+  },
+  "platform_stats": {
+    "whatsapp": {
+      "total": 2,
+      "positive": 1,
+      "negative": 0,
+      "neutral": 1,
+      "satisfaction_rate": 0.5
+    }
+  },
+  "user_stats": {
+    "demo_user": {
+      "total_feedback": 2,
+      "positive_feedback": 1,
+      "negative_feedback": 0,
+      "neutral_feedback": 1,
+      "engagement_score": 0.5
+    }
+  },
+  "metadata": {
+    "created": "2025-08-11T14:46:24.378722",
+    "last_updated": "2025-09-01T14:02:12.322830"
+  }
+}

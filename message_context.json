@@ -1,0 +1,196 @@
+{
+  "conversations": {
+    "demo_user_whatsapp": [
+      {
+        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+        "timestamp": "2025-08-11T14:55:00.458698",
+        "message_id": "single_1754904300.458698"
+      },
+      {
+        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+        "timestamp": "2025-08-12T12:57:31.980775",
+        "message_id": "single_1754983651.980775"
+      },
+      {
+        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+        "timestamp": "2025-08-12T12:57:49.960616",
+        "message_id": "single_1754983669.960616"
+      },
+      {
+        "message_text": "Can you please come by 2pm.",
+        "timestamp": "2025-08-12T12:58:34.474595",
+        "message_id": "single_1754983714.474595"
+      },
+      {
+        "message_text": "hey! 😊 just saw ur msg. yeah im free tonight around 8pm. should we meet at the usual place? btw did u get the photos from last weekend? lmk! 📸✨",
+        "timestamp": "2025-08-12T13:10:29.546284",
+        "message_id": "single_1754984429.546284"
+      },
+      {
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-09-01T14:02:03.418901",
+        "message_id": "single_1756715523.418901"
+      }
+    ],
+    "alice_work_email": [
+      {
+        "message_text": "Hi team, please review the quarterly budget proposal attached. Need feedback by Friday for the board meeting.",
+        "timestamp": "2025-08-07T09:00:00Z",
+        "message_id": "msg_001"
+      },
+      {
+        "message_text": "Hey, did the report get done? The board meeting is tomorrow!",
+        "timestamp": "2025-08-07T16:45:00Z",
+        "message_id": "msg_003"
+      },
+      {
+        "message_text": "Hi team, please review the quarterly budget proposal attached. Need feedback by Friday for the board meeting.",
+        "timestamp": "2025-08-07T09:00:00Z",
+        "message_id": "msg_001"
+      },
+      {
+        "message_text": "Hey, did the report get done? The board meeting is tomorrow!",
+        "timestamp": "2025-08-07T16:45:00Z",
+        "message_id": "msg_003"
+      },
+      {
+        "message_text": "Hi team, please review the quarterly budget proposal attached. Need feedback by Friday for the board meeting.",
+        "timestamp": "2025-08-07T09:00:00Z",
+        "message_id": "msg_001"
+      },
+      {
+        "message_text": "Hey, did the report get done? The board meeting is tomorrow!",
+        "timestamp": "2025-08-07T16:45:00Z",
+        "message_id": "msg_003"
+      }
+    ],
+    "bob_friend_whatsapp": [
+      {
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-08-07T14:30:00Z",
+        "message_id": "msg_002"
+      },
+      {
+        "message_text": "did u see my message about the party? need headcount for food!",
+        "timestamp": "2025-08-07T18:00:00Z",
+        "message_id": "msg_007"
+      },
+      {
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-08-07T14:30:00Z",
+        "message_id": "msg_002"
+      },
+      {
+        "message_text": "did u see my message about the party? need headcount for food!",
+        "timestamp": "2025-08-07T18:00:00Z",
+        "message_id": "msg_007"
+      },
+      {
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-08-07T14:30:00Z",
+        "message_id": "msg_002"
+      },
+      {
+        "message_text": "did u see my message about the party? need headcount for food!",
+        "timestamp": "2025-08-07T18:00:00Z",
+        "message_id": "msg_007"
+      },
+      {
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-08-07T14:30:00Z",
+        "message_id": "msg_002"
+      },
+      {
+        "message_text": "did u see my message about the party? need headcount for food!",
+        "timestamp": "2025-08-07T18:00:00Z",
+        "message_id": "msg_007"
+      }
+    ],
+    "customer_support_slack": [
+      {
+        "message_text": "The login system is down again. Multiple customers are complaining. This is urgent!",
+        "timestamp": "2025-08-07T11:15:00Z",
+        "message_id": "msg_004"
+      },
+      {
+        "message_text": "The login system is down again. Multiple customers are complaining. This is urgent!",
+        "timestamp": "2025-08-07T11:15:00Z",
+        "message_id": "msg_004"
+      },
+      {
+        "message_text": "The login system is down again. Multiple customers are complaining. This is urgent!",
+        "timestamp": "2025-08-07T11:15:00Z",
+        "message_id": "msg_004"
+      }
+    ],
+    "fashion_influencer_instagram": [
+      {
+        "message_text": "love ur latest post! 😍 where did u get that dress?",
+        "timestamp": "2025-08-07T08:20:00Z",
+        "message_id": "msg_005"
+      },
+      {
+        "message_text": "love ur latest post! 😍 where did u get that dress?",
+        "timestamp": "2025-08-07T08:20:00Z",
+        "message_id": "msg_005"
+      },
+      {
+        "message_text": "love ur latest post! 😍 where did u get that dress?",
+        "timestamp": "2025-08-07T08:20:00Z",
+        "message_id": "msg_005"
+      }
+    ],
+    "project_manager_teams": [
+      {
+        "message_text": "Can we schedule a quick standup for tomorrow at 10 AM? Need to discuss the sprint planning.",
+        "timestamp": "2025-08-07T17:10:00Z",
+        "message_id": "msg_006"
+      },
+      {
+        "message_text": "Can we schedule a quick standup for tomorrow at 10 AM? Need to discuss the sprint planning.",
+        "timestamp": "2025-08-07T17:10:00Z",
+        "message_id": "msg_006"
+      },
+      {
+        "message_text": "Can we schedule a quick standup for tomorrow at 10 AM? Need to discuss the sprint planning.",
+        "timestamp": "2025-08-07T17:10:00Z",
+        "message_id": "msg_006"
+      },
+      {
+        "message_text": "Can we schedule a quick standup for tomorrow at 10 AM? Need to discuss the sprint planning.",
+        "timestamp": "2025-08-07T17:10:00Z",
+        "message_id": "msg_006"
+      }
+    ],
+    "demo_user_email": [
+      {
+        "message_text": "I will send the quarterly report tonight after the meeting.",
+        "timestamp": "2025-08-07T09:00:00Z",
+        "message_id": "msg_1754903897.914723"
+      },
+      {
+        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+        "timestamp": "2025-08-12T13:21:02.720297",
+        "message_id": "single_1754985062.720297"
+      },
+      {
+        "message_text": "Hi John, I hope this email finds you well. I wanted to follow up on our meeting yesterday regarding the quarterly budget proposal. Could you please send me the updated financial projections by Friday? The board meeting is scheduled for next Monday and we need to finalize the numbers. Thanks for your time and looking forward to your response. Best regards, Sarah",
+        "timestamp": "2025-08-12T14:19:00.563792",
+        "message_id": "single_1754988540.563792"
+      },
+      {
+        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+        "timestamp": "2025-08-19T15:34:19.987464",
+        "message_id": "single_1755597859.987464"
+      }
+    ],
+    "demo_user_instagram": [
+      {
+        "message_text": "love ur latest post! 😍 where did u get that dress?",
+        "timestamp": "2025-08-19T15:35:09.405689",
+        "message_id": "single_1755597909.405689"
+      }
+    ]
+  },
+  "user_profiles": {}
+}

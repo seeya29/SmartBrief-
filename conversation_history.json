@@ -1,0 +1,119 @@
+{
+  "conversations": {
+    "demo_user_whatsapp": [
+      {
+        "message_id": "single_1754903807.226386",
+        "message_text": "Hey! Can you send me those photos from yesterday? Need them for my Instagram story ASAP!",
+        "timestamp": "2025-08-11T14:46:47.226386",
+        "analysis": {
+          "summary": "🙏 Continuing: Hey",
+          "type": "urgent",
+          "intent": "request",
+          "urgency": "high",
+          "confidence": 0.75,
+          "context_used": true,
+          "platform_optimized": true,
+          "reasoning": [
+            "Classified as 'request' intent based on message patterns",
+            "Urgency level: 'high' based on keyword analysis",
+            "Platform-optimized for whatsapp",
+            "Used conversation context (1 insights)",
+            "Context: Continues previous conversation topic"
+          ],
+          "metadata": {
+            "intent_confidence": 1.0,
+            "urgency_confidence": 0.5,
+            "context_messages_used": 3,
+            "platform": "whatsapp",
+            "timestamp": "2025-08-11T14:46:47.226386",
+            "context_insights": [
+              "Continues previous conversation topic"
+            ]
+          }
+        }
+      },
+      {
+        "message_id": "single_1754984429.546284",
+        "message_text": "hey! 😊 just saw ur msg. yeah im free tonight around 8pm. should we meet at the usual place? btw did u get the photos from last weekend? lmk! 📸✨",
+        "timestamp": "2025-08-12T13:10:29.546284",
+        "analysis": {}
+      },
+      {
+        "message_id": "single_1756715523.418901",
+        "message_text": "yo whats up? party tonight at 8pm, u coming?",
+        "timestamp": "2025-09-01T14:02:03.418901",
+        "analysis": {
+          "summary": "❓ Continuing: yo whats up",
+          "type": "inquiry",
+          "intent": "question",
+          "urgency": "low",
+          "confidence": 0.5333333333333333,
+          "context_used": true,
+          "platform_optimized": true,
+          "reasoning": [
+            "Classified as 'question' intent based on message patterns",
+            "Urgency level: 'low' based on keyword analysis",
+            "Platform-optimized for whatsapp",
+            "Used conversation context (1 insights)",
+            "Context: Continues previous conversation topic"
+          ],
+          "metadata": {
+            "intent_confidence": 0.6666666666666666,
+            "urgency_confidence": 0.4,
+            "context_messages_used": 3,
+            "platform": "whatsapp",
+            "timestamp": "2025-09-01T14:02:03.418901",
+            "context_insights": [
+              "Continues previous conversation topic"
+            ]
+          }
+        }
+      }
+    ],
+    "demo_user_instagram": [
+      {
+        "message_id": "single_1754984903.372543",
+        "message_text": "OMG this sunset is absolutely gorgeous! 🌅✨ Can't believe how beautiful the colors are tonight. Nature never fails to amaze me 💕 What's everyone up to this evening? #sunset #beautiful #grateful",
+        "timestamp": "2025-08-12T13:18:23.372543",
+        "analysis": {}
+      }
+    ],
+    "demo_user_email": [
+      {
+        "message_id": "single_1754988540.563792",
+        "message_text": "Hi John, I hope this email finds you well. I wanted to follow up on our meeting yesterday regarding the quarterly budget proposal. Could you please send me the updated financial projections by Friday? The board meeting is scheduled for next Monday and we need to finalize the numbers. Thanks for your time and looking forward to your response. Best regards, Sarah",
+        "timestamp": "2025-08-12T14:19:00.563792",
+        "analysis": {}
+      }
+    ]
+  },
+  "user_profiles": {
+    "demo_user": {
+      "platforms": {
+        "whatsapp": 3,
+        "instagram": 1,
+        "email": 1
+      },
+      "message_patterns": {
+        "intents": {
+          "request": 1,
+          "question": 1
+        },
+        "urgency_levels": {
+          "high": 1,
+          "low": 1
+        },
+        "common_topics": []
+      },
+      "activity_stats": {
+        "total_messages": 5,
+        "first_seen": "2025-08-11T14:47:34.506596",
+        "last_seen": "2025-09-01T14:02:12.333716"
+      }
+    }
+  },
+  "metadata": {
+    "created": "2025-08-11T14:46:24.378722",
+    "last_updated": "2025-09-01T14:02:12.333716"
+  }
+}

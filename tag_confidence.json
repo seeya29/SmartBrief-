@@ -1,0 +1,153 @@
+{
+  "email_001": {
+    "tag": "URGENT",
+    "confidence": 1.0,
+    "timestamp": "2025-08-01T17:10:42.252481"
+  },
+  "email_002": {
+    "tag": "MEETING",
+    "confidence": 0.2342857142857143,
+    "timestamp": "2025-08-01T17:10:42.263499"
+  },
+  "email_003": {
+    "tag": "FINANCIAL",
+    "confidence": 0.5700000000000001,
+    "timestamp": "2025-08-01T17:10:42.267492"
+  },
+  "email_004": {
+    "tag": "URGENT",
+    "confidence": 0.3,
+    "timestamp": "2025-08-01T17:10:42.270207"
+  },
+  "email_005": {
+    "tag": "URGENT",
+    "confidence": 0.9732142857142858,
+    "timestamp": "2025-08-01T17:10:42.274853"
+  },
+  "email_006": {
+    "tag": "NEWSLETTER",
+    "confidence": 0.54,
+    "timestamp": "2025-08-01T17:10:42.276043"
+  },
+  "email_007": {
+    "tag": "MEETING",
+    "confidence": 0.25771428571428573,
+    "timestamp": "2025-08-01T17:10:42.279636",
+    "corrected": true,
+    "feedback_quality": 0
+  },
+  "email_008": {
+    "tag": "SECURITY",
+    "confidence": 0.76875,
+    "timestamp": "2025-08-01T17:10:42.279636"
+  },
+  "email_39": {
+    "tag": "SECURITY",
+    "confidence": 0.3,
+    "timestamp": "2025-08-01T18:02:29.864524"
+  },
+  "email_40": {
+    "tag": "SECURITY",
+    "confidence": 0.31875,
+    "timestamp": "2025-08-01T18:22:22.181980"
+  },
+  "email_41": {
+    "tag": "SECURITY",
+    "confidence": 0.31875,
+    "timestamp": "2025-08-01T18:22:22.190871"
+  },
+  "email_42": {
+    "tag": "SECURITY",
+    "confidence": 0.31875,
+    "timestamp": "2025-08-01T18:22:22.193992"
+  },
+  "email_43": {
+    "tag": "NEWSLETTER",
+    "confidence": 0.21120000000000003,
+    "timestamp": "2025-08-01T18:22:22.200390",
+    "corrected": true,
+    "feedback_quality": 0
+  },
+  "email_44": {
+    "tag": "SECURITY",
+    "confidence": 0.4687499999999999,
+    "timestamp": "2025-08-01T18:22:22.200390"
+  },
+  "email_45": {
+    "tag": "SECURITY",
+    "confidence": 0.4687499999999999,
+    "timestamp": "2025-08-01T18:22:22.207602"
+  },
+  "email_46": {
+    "tag": "SECURITY",
+    "confidence": 0.4687499999999999,
+    "timestamp": "2025-08-01T18:22:22.210250"
+  },
+  "email_47": {
+    "tag": "IMPORTANT",
+    "confidence": 0.16,
+    "timestamp": "2025-08-01T18:22:22.215697"
+  },
+  "email_48": {
+    "tag": "URGENT",
+    "confidence": 0.3,
+    "timestamp": "2025-08-01T18:22:22.215697"
+  },
+  "email_49": {
+    "tag": "MEETING",
+    "confidence": 0.11428571428571428,
+    "timestamp": "2025-08-01T18:22:22.215697"
+  },
+  "email_50": {
+    "tag": "SECURITY",
+    "confidence": 0.31875,
+    "timestamp": "2025-08-01T18:22:22.223239"
+  },
+  "email_51": {
+    "tag": "SECURITY",
+    "confidence": 0.4687499999999999,
+    "timestamp": "2025-08-01T18:22:22.223239"
+  },
+  "email_52": {
+    "tag": "SECURITY",
+    "confidence": 0.4687499999999999,
+    "timestamp": "2025-08-01T18:22:22.223239"
+  },
+  "email_53": {
+    "tag": "IMPORTANT",
+    "confidence": 0.16,
+    "timestamp": "2025-08-01T18:22:22.236421"
+  },
+  "email_54": {
+    "tag": "PROMOTIONAL",
+    "confidence": 0.05714285714285714,
+    "timestamp": "2025-08-01T18:22:22.238442"
+  },
+  "email_55": {
+    "tag": "IMPORTANT",
+    "confidence": 0.3226666666666667,
+    "timestamp": "2025-08-01T18:22:22.244497",
+    "corrected": true,
+    "feedback_quality": -1.0
+  },
+  "email_56": {
+    "tag": "GENERAL",
+    "confidence": 0.3,
+    "timestamp": "2025-08-01T18:22:22.247939"
+  },
+  "email_57": {
+    "tag": "IMPORTANT",
+    "confidence": 0.16,
+    "timestamp": "2025-08-01T18:22:22.252510"
+  },
+  "email_58": {
+    "tag": "IMPORTANT",
+    "confidence": 0.29333333333333333,
+    "timestamp": "2025-08-01T18:22:22.259294"
+  },
+  "email_59": {
+    "tag": "GENERAL",
+    "confidence": 0.3,
+    "timestamp": "2025-08-01T18:22:22.266907"
+  }
+}

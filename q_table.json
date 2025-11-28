@@ -1,0 +1,56 @@
+{
+  "support_False_False": {
+    "default": 0.5284767129311241
+  },
+  "events_False_False": {
+    "default": 0.9774716004550608
+  },
+  "offers_False_False": {
+    "default": -0.40951000000000004
+  },
+  "noreply_False_False": {
+    "default": 0.5217031000000001
+  },
+  "manager_True_False_True": {
+    "default": 0.1
+  },
+  "newsletter_False_False_False": {
+    "default": 0.1
+  },
+  "support_False_False_False": {
+    "default": -0.019000000000000017
+  },
+  "hr_True_False_True": {
+    "default": -0.1
+  },
+  "offers_False_False_False": {
+    "default": -0.010000000000000009
+  },
+  "events_False_False_False": {
+    "default": 0.19
+  },
+  "noreply_False_False_False": {
+    "default": 0.19
+  },
+  "support_True_False_True": {
+    "default": 0.0
+  },
+  "support_True_False_False": {
+    "default": 0.1
+  },
+  "support_False_False_True": {
+    "default": 0.2
+  },
+  "noreply_False_False_True": {
+    "default": 0.1
+  },
+  "Google <no-reply_True_False_False": {
+    "default": 0.5789177562146082
+  },
+  "Google Workspace <workspace_False_False_True": {
+    "default": 1.2251590220000002
+  },
+  "KANGUTKAR SEEYA <vu2f2223012_False_True_False": {
+    "default": 0.271
+  }
+}
