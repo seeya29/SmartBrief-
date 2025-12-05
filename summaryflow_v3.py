@@ -248,6 +248,7 @@ def _email_clean(text: str) -> str:
     signature_started = False
 
     signature_markers = {"--", "__", "Sent from my iPhone", "Sent from my Android", "Regards", "Best", "Thanks"}
+    forwarded_markers = {"Forwarded message", "Begin forwarded message", "-----Original Message-----", "----- Forwarded Message -----", "From:", "Sent:", "To:"}
 
     for line in lines:
         lstr = line.strip()
@@ -256,6 +257,12 @@ def _email_clean(text: str) -> str:
         if lstr.lower().startswith("subject:") and subject is None:
             subject = lstr.split(":", 1)[1].strip() if ":" in lstr else lstr
             continue
+        if lstr.startswith(">"):
+            continue
+        if any(lstr.startswith(m) for m in forwarded_markers):
+            continue
+        if re.match(r"^On .+ wrote:\s*$", lstr, re.IGNORECASE):
+            continue
         if any(lstr.startswith(m) for m in signature_markers):
             signature_started = True
         if signature_started:
@@ -263,6 +270,14 @@ def _email_clean(text: str) -> str:
         cleaned_lines.append(lstr)
 
     body = " ".join(cleaned_lines)
+    body = _normalize_spacing(body)
+    body = re.sub(r"(?i)\bBegin forwarded message\b.*", "", body)
+    body = re.sub(r"(?i)\bForwarded message\b.*", "", body)
+    body = re.sub(r"(?i)\bOn .+ wrote:\b", "", body)
+    body = re.sub(r"(?i)\bFrom:\b.*", "", body)
+    body = re.sub(r"(?i)\bSent:\b.*", "", body)
+    body = re.sub(r"(?i)\bTo:\b.*", "", body)
+    body = re.sub(r"\s>[^\n]*", "", body)
     body = _normalize_spacing(body)
     if subject:
         return f"{subject} — {body}" if body else subject
@@ -312,33 +327,41 @@ def _format_iso_utc(dt: datetime) -> str:
 
 # === Helpers: entity extraction ===
 def _extract_people(text: str) -> List[str]:
-    """Naive person extractor: finds capitalized names, especially after 'with'."""
     people: List[str] = []
 
-    # Capture names after 'with' (e.g., "meeting with Priya Sharma")
-    for m in re.finditer(r"\bwith\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)", text):
+    for m in re.finditer(r"\b(?:with|from|to|cc|attn)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)", text):
         name = m.group(1).strip()
         if name and name not in people:
             people.append(name)
 
-    # Fallback: standalone title-case tokens not at sentence start (simple heuristic)
-    tokens = re.findall(r"\b([A-Z][a-z]+)\b", text)
+    honorific = re.findall(r"\b(?:Mr\.|Mrs\.|Ms\.|Dr\.)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)", text)
+    for name in honorific:
+        if name and name not in people:
+            people.append(name)
+
+    tokens_text = text
+    if "—" in tokens_text:
+        left, right = tokens_text.split("—", 1)
+        tokens_text = right
+    elif " - " in tokens_text:
+        left, right = tokens_text.split(" - ", 1)
+        tokens_text = right
+    if tokens_text.lower().startswith("subject:"):
+        tokens_text = tokens_text.split(":", 1)[1]
+    tokens_text = re.sub(r"^(\s*Reminder\b[\s:\-–—]*)", "", tokens_text)
+    tokens = re.findall(r"\b([A-Z][a-z]+)\b", tokens_text)
     for tok in tokens:
-        # Skip common words that may be capitalized at start
-        if tok.lower() in {"hey", "please", "confirm", "tomorrow", "meeting", "pm", "am"}:
+        if tok.lower() in {"hey", "please", "confirm", "tomorrow", "meeting", "pm", "am", "hello", "update", "subject", "let", "thanks", "regards", "reminder"}:
             continue
         if tok not in people:
             people.append(tok)
 
+    stop = {"hey","please","confirm","tomorrow","meeting","pm","am","hello","update","subject","let","thanks","regards","reminder"}
+    people = [p for p in people if p.lower() not in stop]
     return people
 
 
 def _extract_datetime(text: str, anchor: datetime) -> Optional[datetime]:
-    """Extract a target datetime using relative day words and time patterns.
-
-    Supported: 'today', 'tomorrow', explicit times like '5 PM', '17:00'. If no day is
-    specified but a time is given, assume same day as anchor.
-    """
     text_lower = text.lower()
     day_offset = 0
     if "tomorrow" in text_lower:
@@ -346,31 +369,65 @@ def _extract_datetime(text: str, anchor: datetime) -> Optional[datetime]:
     elif "today" in text_lower:
         day_offset = 0
 
-    # Time regex: 5 PM, 5pm, 17:00, 5:30 pm
-    time_match = re.search(
-        r"\b(\d{1,2})(?::(\d{2}))?\s*(am|pm|AM|PM)?\b",
-        text
-    )
+    weekdays = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
+    for i, wd in enumerate(weekdays):
+        if wd in text_lower:
+            current_idx = anchor.weekday()
+            target_idx = i
+            diff = (target_idx - current_idx) % 7
+            if diff == 0:
+                diff = 7
+            day_offset = diff
+            break
 
+    default_times = {
+        "morning": (9, 0),
+        "afternoon": (15, 0),
+        "evening": (18, 0),
+        "tonight": (20, 0),
+        "eod": (17, 0),
+        "end of day": (17, 0),
+    }
+    for k, (h, m) in default_times.items():
+        if k in text_lower:
+            target_date = (anchor + timedelta(days=day_offset)).date()
+            return datetime(target_date.year, target_date.month, target_date.day, h, m, tzinfo=timezone.utc)
+
+    rel = re.search(r"\bin\s+(\d+)\s+(minutes|minute|hours|hour|days|day)\b", text_lower)
+    if rel:
+        val = int(rel.group(1))
+        unit = rel.group(2)
+        if unit.startswith("minute"):
+            return anchor + timedelta(minutes=val)
+        if unit.startswith("hour"):
+            return anchor + timedelta(hours=val)
+        if unit.startswith("day"):
+            return anchor + timedelta(days=val)
+
+    time_match = re.search(r"\b(\d{1,2})(?::(\d{2}))?\s*(am|pm|AM|PM)?\b", text)
     if not time_match:
-        # No explicit time, try full date e.g. 2025-11-21 or Nov 21
         iso_date = re.search(r"\b(\d{4})-(\d{2})-(\d{2})\b", text)
         if iso_date:
             year, month, day = map(int, iso_date.groups())
+            return datetime(year, month, day, tzinfo=timezone.utc)
+        month_day = re.search(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})\b", text)
+        if month_day:
+            months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,"Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
+            month = months[month_day.group(1)]
+            day = int(month_day.group(2))
+            year = anchor.year
             return datetime(year, month, day, tzinfo=timezone.utc)
         return None
 
     hour = int(time_match.group(1))
     minute = int(time_match.group(2)) if time_match.group(2) else 0
     ampm = time_match.group(3)
-
     if ampm:
         ampm_lower = ampm.lower()
         if ampm_lower == "pm" and hour != 12:
             hour += 12
         elif ampm_lower == "am" and hour == 12:
             hour = 0
-
     target_date = (anchor + timedelta(days=day_offset)).date()
     return datetime(target_date.year, target_date.month, target_date.day, hour, minute, tzinfo=timezone.utc)
 
@@ -378,15 +435,15 @@ def _extract_datetime(text: str, anchor: datetime) -> Optional[datetime]:
 # === Helpers: classification ===
 def _classify_type(text: str) -> str:
     t = text.lower()
-    if any(w in t for w in ["meeting", "meet", "appointment", "call"]):
+    if any(w in t for w in ["meeting", "meet", "appointment", "call", "schedule", "reschedule", "cancel", "talk", "chat"]):
         return "meeting"
-    if any(w in t for w in ["reminder", "don't forget", "dont forget", "remember", "due", "deadline"]):
+    if any(w in t for w in ["reminder", "don't forget", "dont forget", "remember", "due", "deadline", "by eod", "eod", "by "]):
         return "reminder"
-    if any(w in t for w in ["fyi", "for your information", "note", "heads up", "just letting you know"]):
+    if any(w in t for w in ["fyi", "for your information", "note", "heads up", "update"]):
         return "note"
-    if any(w in t for w in ["task", "todo", "action item"]):
+    if any(w in t for w in ["task", "todo", "action item", "assign", "please", "can you", "could you"]):
         return "task"
-    if any(w in t for w in ["question", "?", "ask", "clarify"]):
+    if any(w in t for w in ["question", "?", "ask", "clarify", "who", "what", "when", "where", "how", "why"]):
         return "question"
     return "message"
 
@@ -404,25 +461,27 @@ def _classify_intent(text: str, msg_type: str) -> str:
             return "cancel_meeting"
         return "inform_meeting"
 
-    if msg_type == "reminder" or any(w in t for w in ["reminder", "don't forget", "dont forget", "remember"]):
+    if msg_type == "reminder" or any(w in t for w in ["reminder", "don't forget", "dont forget", "remember", "due", "deadline", "by eod", "eod"]):
         return "reminder"
     if msg_type == "note":
         return "informational"
 
-    if "urgent" in t or "asap" in t or "immediately" in t:
+    if any(w in t for w in ["urgent", "asap", "immediately", "high priority", "priority"]):
         return "urgent_request"
-    if any(w in t for w in ["can you", "please", "could you", "send", "share", "help"]):
+    if any(w in t for w in ["can you", "please", "could you", "send", "share", "help", "assign", "finish", "complete"]):
         return "request"
     if any(w in t for w in ["update", "any update", "follow up", "follow-up", "status"]):
         return "follow_up"
-    if any(w in t for w in ["question", "?", "how", "what", "why", "when"]):
+    if any(w in t for w in ["question", "?", "how", "what", "why", "when", "where"]):
         return "question"
     return "informational"
 
 
 def _classify_urgency(text: str, target_dt: Optional[datetime], anchor: datetime) -> str:
     t = text.lower()
-    if any(w in t for w in ["emergency", "critical", "urgent", "asap", "immediately"]):
+    if any(w in t for w in ["emergency", "critical", "urgent", "asap", "immediately", "high priority", "priority"]):
+        return "high"
+    if t.count("!") >= 3:
         return "high"
 
     if target_dt:
@@ -434,8 +493,7 @@ def _classify_urgency(text: str, target_dt: Optional[datetime], anchor: datetime
             return "medium"
         return "low"
 
-    # No explicit time: gentle defaults
-    if any(w in t for w in ["soon", "tomorrow", "today"]):
+    if any(w in t for w in ["soon", "tomorrow", "today", "eod", "end of day", "tonight"]):
         return "medium"
     return "low"
 
