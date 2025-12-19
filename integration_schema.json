@@ -1,0 +1,37 @@
+{
+  "required_fields": [
+    "user_id",
+    "platform",
+    "message_id",
+    "message_text",
+    "timestamp"
+  ],
+  "example_payload": {
+    "user_id": "abc123",
+    "platform": "whatsapp",
+    "message_id": "m123",
+    "message_text": "Let's meet tomorrow at 5 pm with Priya.",
+    "timestamp": "2025-12-05T09:00:00Z"
+  },
+  "output_structure": {
+    "summary_id": "s_123",
+    "user_id": "abc123",
+    "platform": "whatsapp",
+    "message_id": "m123",
+    "summary": "Concise summary of the message",
+    "intent": "meeting|reminder|question|task|note",
+    "urgency": "low|medium|high",
+    "entities": {
+      "person": ["Priya"],
+      "datetime": "2025-12-05T17:00:00Z"
+    },
+    "context_flags": ["has_date", "has_person", "follow_up"],
+    "generated_at": "2025-12-05T09:00:02Z",
+    "device_context": "ios|android|web|windows|macos|unknown"
+  },
+  "error_format": {
+    "error": "invalid_payload|not_found|internal_error",
+    "detail": "Human-readable description",
+    "trace_id": "optional id for logging correlation"
+  }
+}

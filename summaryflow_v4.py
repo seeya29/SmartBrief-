@@ -175,3 +175,36 @@ def save_summary_v4(summary_dict: Dict[str, Any]) -> None:
     finally:
         conn.close()
 
+
+def fetch_summary_v4(summary_id: str) -> Optional[Dict[str, Any]]:
+    db_path = _get_db_path()
+    if not os.path.exists(db_path):
+        return None
+    conn = sqlite3.connect(db_path)
+    try:
+        _ensure_schema_v4(conn)
+        cur = conn.execute(
+            f"SELECT summary_id, user_id, platform, message_id, summary, intent, urgency, entities, timestamp FROM {TABLE_NAME} WHERE summary_id = ?",
+            (summary_id,),
+        )
+        row = cur.fetchone()
+        if not row:
+            return None
+        try:
+            entities = json.loads(row[7]) if row[7] else {}
+        except Exception:
+            entities = row[7]
+        return {
+            "summary_id": row[0],
+            "user_id": row[1],
+            "platform": row[2],
+            "message_id": row[3],
+            "summary": row[4],
+            "intent": row[5],
+            "urgency": row[6],
+            "entities": entities,
+            "generated_at": row[8],
+        }
+    finally:
+        conn.close()
+

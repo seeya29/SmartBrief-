@@ -463,8 +463,6 @@ def _classify_intent(text: str, msg_type: str) -> str:
 
     if msg_type == "reminder" or any(w in t for w in ["reminder", "don't forget", "dont forget", "remember", "due", "deadline", "by eod", "eod"]):
         return "reminder"
-    if msg_type == "note":
-        return "informational"
 
     if any(w in t for w in ["urgent", "asap", "immediately", "high priority", "priority"]):
         return "urgent_request"
@@ -474,6 +472,8 @@ def _classify_intent(text: str, msg_type: str) -> str:
         return "follow_up"
     if any(w in t for w in ["question", "?", "how", "what", "why", "when", "where"]):
         return "question"
+    if msg_type == "note":
+        return "informational"
     return "informational"
 
 

@@ -121,3 +121,15 @@ Mobile-friendly dashboard
     - `{ "user_id": "abc123", "platform": "whatsapp", "message_id": "m001", "message_text": "Hey, please confirm tomorrow's 5 PM meeting with Priya.", "timestamp": "2025-11-20T14:00:00Z" }`
 - Output structure:
   - `{ "summary_id": "s_...", "user_id": "abc123", "platform": "whatsapp", "message_id": "m001", "summary": "User wants confirmation for a 5 PM meeting with Priya tomorrow.", "type": "meeting", "intent": "confirm_meeting", "urgency": "medium", "entities": { "person": ["Priya"], "datetime": "2025-11-21T17:00:00Z" }, "generated_at": "2025-11-20T14:00:02Z" }`
+
+**SummaryFlow v4 Microservice**
+- Run: `python -m uvicorn summaryflow_service.main:app --reload`
+- Endpoints:
+  - `GET /health`
+  - `POST /summarize`
+  - `POST /classify`
+  - `POST /entities`
+  - `GET /history/{summary_id}`
+- Example call (PowerShell):
+  - `Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/summarize -ContentType 'application/json' -Body '{ "user_id":"abc123", "platform":"whatsapp", "message_id":"m123", "message_text":"Let\u2019s meet tomorrow at 5 pm with Priya.", "timestamp":"2025-12-05T09:00:00Z" }' | ConvertTo-Json -Depth 6`
+- Integration schema: `integration_schema.json`
